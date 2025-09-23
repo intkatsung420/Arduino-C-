@@ -1,0 +1,30 @@
+// C++ code
+//
+int analog_output = 9;
+const int analog_input = A0;
+int analog_value;
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(analog_output, OUTPUT);
+  pinMode(analog_input, INPUT);
+}
+
+void loop()
+{
+  
+ analog_value = analogRead(analog_input);
+ int output_value = map(analog_value, 0, 1023, 0, 255); // map function
+
+ 
+  analogWrite(analog_output, output_value);
+  Serial.println(analog_value);
+  Serial.println(output_value);
+  
+  if(output_value > 200 && output_value < 220) {
+    digitalWrite(analog_output, HIGH);
+    delay(250);
+    digitalWrite(analog_output, LOW);
+    delay(250);
+  }
+}
