@@ -8,6 +8,8 @@
 const int trigPin = 11;
 const int echoPin = 12;
 
+bool objectHere = false;
+
 // defines variables
 long duration;
 int distance;
@@ -38,20 +40,27 @@ void loop() {
 
   // Calculating the distance
   distance = duration * 0.034 / 2;
+  Serial.println(distance);
   
   // Prints the distance on the Serial Monitor
-  if (distance < 5)
-  {
+  if (distance < 20 ) {
+  if(!objectHere) {
   Serial.println("Object Detected & Present");
+  objectHere = true;
+  }
+  }
+  else {
+    if (objectHere) {
+    Serial.println("Object Gone");
+    objectHere = false;
+  }
+  else {
+    Serial.println ("Waiting To Detect An Object");
+  }
   
-  }
-  else
-  {
-    Serial.println("Waiting To Detect An Object");
-  }
-  // --------------------------------------------------------
+  // }--------------------------------------------------------
   // ADD Your Code Here - Detect a specific distance... like distance > 5 cm
   
-  
+  }
   // --------------------------------------------------------
 }
