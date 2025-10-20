@@ -1,0 +1,15 @@
+#include <Servo.h>
+Servo myServo;
+const int sensor_pin = A0;
+const int servo_output = 6;
+void setup() {
+pinMode(sensor_pin, INPUT);
+myServo.attach(servo_output);
+}
+void loop() 
+{
+int sensor_value = analogRead(sensor_pin);
+int servo_pos = map(sensor_value, 0, 1023, 0, 175);
+ myServo.write(servo_pos);
+delay(500);
+}
