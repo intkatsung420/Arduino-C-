@@ -1,0 +1,27 @@
+void katsung();
+void bonsai();
+const int LED1 = 13;
+void setup()
+{
+
+  Serial.begin(115200);
+
+	pinMode(LED1, OUTPUT);
+}
+void loop()
+{
+  katsung();
+  bonsai();
+}
+void katsung()
+  {
+ digitalWrite(LED1, HIGH);
+	delay(1000);	
+	digitalWrite(LED1, LOW);
+	delay(1000);
+  }
+void bonsai()
+{
+  Serial.println("pa katsung");
+    delay(1000);
+}
