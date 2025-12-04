@@ -1,0 +1,41 @@
+void katsung();
+void bonsai();
+const int LED1 = 13;
+const int LED2 = 7;
+const int LED3 = 6;
+const int LED4 = 5;
+int d = 1000;
+void setup()
+{
+
+  Serial.begin(115200);
+
+	pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+}
+void loop()
+{
+  katsung(LED1, d);
+  katsung(LED2, d);
+  katsung(LED3, d);
+  katsung(LED4, d);
+  bonsai();
+}
+int readSensor(){
+  int value = analogRead(A0);
+  return value;
+}
+void katsung(int laosai, int d)
+  {
+ digitalWrite(laosai, HIGH);
+	delay(d);	
+	digitalWrite(laosai, LOW);
+	delay(d);
+  }
+void bonsai()
+{
+  Serial.println("pa katsung");
+    delay(1000);
+}
